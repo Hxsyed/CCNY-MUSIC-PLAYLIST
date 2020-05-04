@@ -18,16 +18,12 @@ void PrintMenu(string name, PlaylistNode *headObj, PlaylistNode *lastObj)
 				 << " p -- Print Playlist" << endl
 				 << " a -- Add a new song" << endl
 				 << " d -- Delete a song" << endl
-				 << " c -- Change position of song" << endl
 				 << " l -- Output length of entire library (in seconds)" << endl
-				 << " f -- Find song by artist" << endl
-				 << " o -- Output playlist to file" << endl
 				 << " q -- Quit Program" << endl;
 
 			cout << "   Choose an option: ";
 			cin >> input;
 			cout << " ======================================";
-			cout << endl;
 			break;
 		case 'P':
 		case 'p':
@@ -45,11 +41,6 @@ void PrintMenu(string name, PlaylistNode *headObj, PlaylistNode *lastObj)
 			headObj->DeleteSong(headObj);
 			input = 'm';
 			break;
-		case 'C':
-		case 'c':
-			headObj->ChangePositions(headObj);
-			input = 'm';
-			break;
 		case 'L':
 		case 'l':
 			cout << "Playlist length is: " << headObj->GetPlaylistSongLength()
@@ -59,20 +50,6 @@ void PrintMenu(string name, PlaylistNode *headObj, PlaylistNode *lastObj)
 				 << endl;
 			input = 'm';
 			break;
-		case 'F':
-		case 'f':
-			headObj->PrintSongByArtist();
-			cout << endl
-				 << endl
-				 << endl;
-			input = 'm';
-			break;
-		case 'O':
-		case 'o':
-			headObj->OutputToFile();
-			input = 'm';
-			break;
-
 		default:
 			cout << "Invalid input, enter another: ";
 			cin >> input;
@@ -137,24 +114,6 @@ int main()
 	inFS.close();
 
 	PrintMenu(name, headObj, lastObj);
-
-	cout << endl
-		 << endl
-		 << "Save playlist to file? (y/n): ";
-	cin >> input;
-	while ((input != 'y' && input != 'Y') && (input != 'n' && input != 'N'))
-	{ // Asks whether to save playlist
-		cin.clear();
-		cin.ignore(99, '\n');
-		cout << "-Enter either \"y\" or \"n\":";
-		cin >> input;
-	}
-
-	if (input == 'y' || input == 'Y')
-	{
-		headObj->OutputToFile();
-	}
-
 	cout << endl
 		 << "Have a good day!!";
 	return 0;

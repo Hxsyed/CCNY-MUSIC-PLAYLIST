@@ -18,10 +18,7 @@ public:
 	void DeleteSong(PlaylistNode *entryNode);
 	void PrintPlaylistNode();
 	void PrintPlaylist(PlaylistNode *headObj);
-	void PrintSongByArtist();
 	void InsertAfter(PlaylistNode *nodeLoc);
-	void ChangePositions(PlaylistNode *headNode);
-	void OutputToFile();
 	string CheckID(string checkNodeID, PlaylistNode *tailNode, PlaylistNode *headNode);
 
 private:
