@@ -1,3 +1,9 @@
-CCNY-Music Playlist is a back-end code that uses data structures that lets users make a playlist, add songs, remove songs and more!
+# Music-Playlist-Using-Pointers
+C++ program that uses pointers to create a playlist of songs
 
-It was developed by Muner Khan, Ramanpreet Singh, Thierno Dicko, Haroon Syed for our CSC212 class.
+Allows user to manipulate playlist and saves results into a text file.
+
+In order to use you need a MinGW compiler and compile the two source
+codes at once
+
+Command line argument should be: g++ Main.cpp Playlist.cpp -o Music-Playlist

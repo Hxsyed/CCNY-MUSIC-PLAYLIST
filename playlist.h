@@ -1,31 +1,35 @@
-#ifndef PLAYLIST_CLASS
-#define PLAYLIST_CLASS
+#ifndef PLAYLIST_H
+#define PLAYLIST_H
 #include <iostream>
-#include <string>
-#include <vector>
-#include "song.h"
+#include <cstring>
 using namespace std;
 
-class playlist
+class PlaylistNode
 {
-    public:
+public:
+	PlaylistNode(string initID = "", string initSongName = "Unknown", string initArtistName = "Unknown", int initLength = 0, PlaylistNode *initLoc = 0);
+	string GetID();
+	string GetSongName();
+	string GetArtistName();
+	PlaylistNode *GetNextNode();
+	int GetSongLength();
+	int GetPlaylistSongLength();
+	PlaylistNode *AddSong(PlaylistNode *headNode);
+	void DeleteSong(PlaylistNode *entryNode);
+	void PrintPlaylistNode();
+	void PrintPlaylist(PlaylistNode *headObj);
+	void PrintSongByArtist();
+	void InsertAfter(PlaylistNode *nodeLoc);
+	void ChangePositions(PlaylistNode *headNode);
+	void OutputToFile();
+	string CheckID(string checkNodeID, PlaylistNode *tailNode, PlaylistNode *headNode);
 
-    playlist();
-
-    playlist(string n);
-   
-   void addSong(song song);
-   void removeSong(int n);
-   double totalTime();
-   song getSong(int n);
-   void Display(); 
-  
-    private:
-    std::string name;
-    double tim;
-    int numSongs;
-    std::vector<song> list;
+private:
+	string uniqueID;
+	string songName;
+	string artistName;
+	int songLength;
+	PlaylistNode *nextNodePtr;
 };
 
 #endif
-
