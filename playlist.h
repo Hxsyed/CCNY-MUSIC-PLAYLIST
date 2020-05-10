@@ -7,8 +7,7 @@ using namespace std;
 class PlaylistNode
 {
 public:
-	PlaylistNode(string initID = "", string initSongName = "Unknown", string initArtistName = "Unknown", int initLength = 0, PlaylistNode *initLoc = 0);
-	string GetID();
+	PlaylistNode(string initSongName = "Unknown", string initArtistName = "Unknown", int initLength = 0, PlaylistNode *initLoc = 0);
 	string GetSongName();
 	string GetArtistName();
 	PlaylistNode *GetNextNode();
@@ -19,10 +18,9 @@ public:
 	void PrintPlaylistNode();
 	void PrintPlaylist(PlaylistNode *headObj);
 	void InsertAfter(PlaylistNode *nodeLoc);
-	string CheckID(string checkNodeID, PlaylistNode *tailNode, PlaylistNode *headNode);
+	//string CheckID(string checkNodeID, PlaylistNode *tailNode, PlaylistNode *headNode);
 
 private:
-	string uniqueID;
 	string songName;
 	string artistName;
 	int songLength;

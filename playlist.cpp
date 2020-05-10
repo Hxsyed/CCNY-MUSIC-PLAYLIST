@@ -4,10 +4,8 @@
 #include "Playlist.h"
 using namespace std;
 
-PlaylistNode::PlaylistNode(string initID, string initSongName, string initArtistName, int initLength, PlaylistNode *initLoc)
+PlaylistNode::PlaylistNode(string initSongName, string initArtistName, int initLength, PlaylistNode *initLoc)
 {
-
-	this->uniqueID = initID;
 	this->songName = initSongName;
 	this->artistName = initArtistName;
 	this->songLength = initLength;
@@ -16,21 +14,14 @@ PlaylistNode::PlaylistNode(string initID, string initSongName, string initArtist
 	return;
 };
 
-string PlaylistNode::GetID()
-{
-
-	return this->uniqueID;
-}
-
+//Accessor methods--------------------- 
 string PlaylistNode::GetSongName()
 {
-
 	return this->songName;
 }
 
 string PlaylistNode::GetArtistName()
 {
-
 	return this->artistName;
 }
 
@@ -39,6 +30,8 @@ int PlaylistNode::GetSongLength()
 
 	return this->songLength;
 }
+//----------END-------------------------
+
 
 // FUNCTION TO GET THE LENGTH OF THE PLAYLIST
 int PlaylistNode::GetPlaylistSongLength()
@@ -58,19 +51,17 @@ int PlaylistNode::GetPlaylistSongLength()
 // FUNCTION TO ADD  A SONG TO THE PLAYLIST
 PlaylistNode *PlaylistNode::AddSong(PlaylistNode *headNode)
 {
-	string nID, nSongName, nArtistName;
+	string nSongName, nArtistName;
 	int songLength;
 	PlaylistNode *nNode, *tailNode = headNode;
 
 	cout << "    ---ADD SONG---" << endl;
 
 	cin.ignore(99, '\n');
-	cout << " Enter unique ID: ";
-	cin >> nID;
+	
+	
 
-	nID = headNode->CheckID(nID, tailNode, headNode);
-
-	cin.ignore();
+	
 	cout << " Enter song name: ";
 	getline(cin, nSongName);
 
@@ -87,7 +78,7 @@ PlaylistNode *PlaylistNode::AddSong(PlaylistNode *headNode)
 		cin >> songLength;
 	}
 
-	nNode = new PlaylistNode(nID, nSongName, nArtistName, songLength);
+	nNode = new PlaylistNode(nSongName, nArtistName, songLength);
 	while (tailNode->GetNextNode() != 0)
 	{
 		tailNode = tailNode->GetNextNode();
@@ -97,12 +88,12 @@ PlaylistNode *PlaylistNode::AddSong(PlaylistNode *headNode)
 	return nNode;
 }
 
-// FUNCTION TO DELETE A SONG FROM THE PLAYLIST
+// Function for deleting a song from the playlist
 void PlaylistNode::DeleteSong(PlaylistNode *entryNode)
 {
 	PlaylistNode *currNode;
 	PlaylistNode *prevNode;
-	string deleteID;
+	string N;
 	bool found = false;
 	char userChoice = 'n';
 
@@ -111,20 +102,20 @@ void PlaylistNode::DeleteSong(PlaylistNode *entryNode)
 
 	if (entryNode->nextNodePtr == 0)
 	{
-		cout << "ERROR: Playlist is empty, nothing to delete... you monster..." << endl
+		cout << "ERROR: Playlist is empty, nothing to delete." << endl
 			 << endl;
 		return;
 	}
 
 	cout << "    ----DELETE SONG----" << endl;
 
-	cout << " Enter ID to delete: ";
-	cin >> deleteID;
+	cout << " Enter Name of Song to delete: ";
+	cin >> N;
 
 	while (found != true || cin.fail())
 	{
 
-		if (currNode->uniqueID == deleteID)
+		if (currNode->songName == N)
 		{
 
 			cout << "\n found\n";
@@ -132,14 +123,14 @@ void PlaylistNode::DeleteSong(PlaylistNode *entryNode)
 		}
 		else if (currNode->GetNextNode() == 0)
 		{
-			if (currNode->uniqueID == deleteID)
+			if (currNode->songName == N)
 			{
-				cout << "\n found, \n";
+				//Found song that need to be deleted
 				found = true;
 			}
 			else
 			{
-				cout << "\nERROR: ID not found\n";
+				cout << "\nERROR: Song not found\n";
 				break;
 			}
 		}
@@ -154,7 +145,7 @@ void PlaylistNode::DeleteSong(PlaylistNode *entryNode)
 	{
 
 		cout << "\"" << currNode->songName << "\""
-			 << " will be deleted, are you sure? (y/n): ";
+			 << ": will be deleted, are you sure? (y/n): ";
 		cin >> userChoice;
 		while ((userChoice != 'y' && userChoice != 'n') && (userChoice != 'Y' && userChoice != 'N'))
 		{
@@ -163,7 +154,7 @@ void PlaylistNode::DeleteSong(PlaylistNode *entryNode)
 		}
 		if (userChoice == 'y')
 		{
-			cout << "\"" << currNode->songName << "\" was deleted" << endl
+			cout << "\"" << currNode->songName << "\" was deleted from your playlist" << endl
 				 << endl;
 			prevNode->nextNodePtr = currNode->nextNodePtr;
 
@@ -186,8 +177,7 @@ PlaylistNode *PlaylistNode::GetNextNode()
 void PlaylistNode::PrintPlaylistNode()
 {
 
-	cout << " Unique ID:   " << this->uniqueID << endl
-		 << " Song Name:   " << this->songName << endl
+	cout << " Song Name:   " << this->songName << endl
 		 << " Artist Name: " << this->artistName << endl
 		 << " Song Length: " << this->songLength << endl;
 
@@ -224,6 +214,7 @@ void PlaylistNode::PrintPlaylist(PlaylistNode *headObj)
 	return;
 }
 
+
 void PlaylistNode::InsertAfter(PlaylistNode *nodeLoc)
 {
 	PlaylistNode *tmpVal = 0;
@@ -235,33 +226,3 @@ void PlaylistNode::InsertAfter(PlaylistNode *nodeLoc)
 	return;
 }
 
-string PlaylistNode::CheckID(string checkNodeID, PlaylistNode *tailNode, PlaylistNode *headNode)
-{
-	PlaylistNode *currNode, *prevNode;
-
-	prevNode = headNode;
-	currNode = headNode->nextNodePtr;
-
-	while (prevNode != tailNode)
-	{
-		if (currNode->uniqueID == checkNodeID)
-		{
-			cout << "ERROR: ID already taken, choose another: ";
-			cin >> checkNodeID;
-			currNode = headNode;
-		}
-		else if ((currNode == tailNode) && (currNode->uniqueID == checkNodeID))
-		{
-			cout << "ERROR: ID already taken, choose another: ";
-			cin >> checkNodeID;
-			currNode = headNode;
-		}
-		else
-		{
-			prevNode = currNode;
-			currNode = currNode->nextNodePtr;
-		}
-	}
-
-	return checkNodeID;
-}

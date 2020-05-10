@@ -73,8 +73,12 @@ int main()
 	getline(cin, name);
 	cout << endl;
 
-	headObj = new PlaylistNode("head", "head", "head", 1);
+	headObj = new PlaylistNode("head", "head", 1);
 	lastObj = headObj;
+
+
+
+	/*
 
 	inFS.open("Songs.txt");
 	while (!inFS.eof())
@@ -112,9 +116,10 @@ int main()
 	}
 
 	inFS.close();
+	*/
 
 	PrintMenu(name, headObj, lastObj);
 	cout << endl
-		 << "Have a good day!!";
+		 << "Have a good day!!\n";
 	return 0;
 }
