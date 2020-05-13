@@ -62,10 +62,10 @@ PlaylistNode *PlaylistNode::AddSong(PlaylistNode *headNode)
 	
 
 	
-	cout << " Enter song name: ";
+	cout << " Enter song name : ";
 	getline(cin, nSongName);
 
-	cout << " Enter artist name: ";
+	cout << " Enter artist name : ";
 	getline(cin, nArtistName);
 
 	cout << " Enter song length (In seconds): ";
@@ -74,7 +74,7 @@ PlaylistNode *PlaylistNode::AddSong(PlaylistNode *headNode)
 	{
 		cin.clear();
 		cin.ignore(99, '\n');
-		cout << "-Enter a number: ";
+		cout << "-Enter a number : ";
 		cin >> songLength;
 	}
 
@@ -177,9 +177,9 @@ PlaylistNode *PlaylistNode::GetNextNode()
 void PlaylistNode::PrintPlaylistNode()
 {
 
-	cout << " Song Name:   " << this->songName << endl
-		 << " Artist Name: " << this->artistName << endl
-		 << " Song Length: " << this->songLength << endl;
+	cout << " Song Name :   " << this->songName << endl
+		 << " Artist Name : " << this->artistName << endl
+		 << " Song Length : " << this->songLength << endl;
 
 	return;
 }
