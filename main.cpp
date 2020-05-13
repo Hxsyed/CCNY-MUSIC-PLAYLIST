@@ -6,14 +6,14 @@ using namespace std;
 
 void PrintMenu(string name, PlaylistNode *headObj, PlaylistNode *lastObj)
 {
-	char input = 'm';
+	char input = 'n'; //m to n
 
 	while (input != 'q')
 	{
 		switch (input)
 		{
 		case 'M':
-		case 'm':
+		case 'n':
 			cout << " ====== " << name << " Playlist ======" << endl
 				 << " p -- Print Playlist" << endl
 				 << " a -- Add a new song" << endl
@@ -28,18 +28,18 @@ void PrintMenu(string name, PlaylistNode *headObj, PlaylistNode *lastObj)
 		case 'P':
 		case 'p':
 			headObj->PrintPlaylist(headObj);
-			input = 'm';
+			input = 'n';
 			break;
 
 		case 'A':
 		case 'a':
 			lastObj = lastObj->AddSong(headObj);
-			input = 'm';
+			input = 'n';
 			break;
 		case 'D':
 		case 'd':
 			headObj->DeleteSong(headObj);
-			input = 'm';
+			input = 'n';
 			break;
 		case 'L':
 		case 'l':
@@ -48,7 +48,7 @@ void PrintMenu(string name, PlaylistNode *headObj, PlaylistNode *lastObj)
 				 << endl
 				 << endl
 				 << endl;
-			input = 'm';
+			input = 'n';
 			break;
 		default:
 			cout << "Invalid input, enter another: ";
