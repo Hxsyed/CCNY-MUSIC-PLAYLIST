@@ -6,7 +6,7 @@ using namespace std;
 
 void PrintMenu(string name, PlaylistNode *headObj, PlaylistNode *lastObj)
 {
-	char input = 'n'; 
+	char input = 'n';
 
 	while (input != 'q')
 	{
@@ -14,7 +14,7 @@ void PrintMenu(string name, PlaylistNode *headObj, PlaylistNode *lastObj)
 		{
 		case 'M':
 		case 'n':
-			cout << " ====== " << name << " Playlist ======" << endl
+			cout << " " << name << " Playlist " << endl
 				 << " p -- Print Playlist" << endl
 				 << " a -- Add a new song" << endl
 				 << " d -- Delete a song" << endl
@@ -23,7 +23,7 @@ void PrintMenu(string name, PlaylistNode *headObj, PlaylistNode *lastObj)
 
 			cout << "   Choose an option: ";
 			cin >> input;
-			cout << " ======================================";
+			cout << endl;
 			break;
 		case 'P':
 		case 'p':
@@ -75,8 +75,6 @@ int main()
 
 	headObj = new PlaylistNode("head", "head", 1);
 	lastObj = headObj;
-
-
 
 	/*
 
