@@ -6,7 +6,7 @@ using namespace std;
 
 void PrintMenu(string name, PlaylistNode *headObj, PlaylistNode *lastObj)
 {
-	char input = 'n'; //m to n
+	char input = 'n'; 
 
 	while (input != 'q')
 	{
