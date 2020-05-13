@@ -7,7 +7,7 @@ using namespace std;
 class PlaylistNode
 {
 public:
-	PlaylistNode(string initSongName = "Unknown", string initArtistName = "Unknown", int initLength = 0, PlaylistNode *initLoc = 0);
+	PlaylistNode(string initSongName = " Unknown ", string initArtistName = " Unknown ", int initLength = 0, PlaylistNode *initLoc = 0);
 	string GetSongName();
 	string GetArtistName();
 	PlaylistNode *GetNextNode();
