@@ -18,7 +18,6 @@ public:
 	void PrintPlaylistNode();
 	void PrintPlaylist(PlaylistNode *headObj);
 	void InsertAfter(PlaylistNode *nodeLoc);
-	//string CheckID(string checkNodeID, PlaylistNode *tailNode, PlaylistNode *headNode);
 
 private:
 	string songName;
@@ -26,5 +25,4 @@ private:
 	int songLength;
 	PlaylistNode *nextNodePtr;
 };
-
 #endif

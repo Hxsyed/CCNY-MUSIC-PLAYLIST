@@ -14,7 +14,7 @@ PlaylistNode::PlaylistNode(string initSongName, string initArtistName, int initL
 	return;
 };
 
-//Accessor methods--------------------- 
+//Accessor methods---------------------
 string PlaylistNode::GetSongName()
 {
 	return this->songName;
@@ -30,8 +30,12 @@ int PlaylistNode::GetSongLength()
 
 	return this->songLength;
 }
-//----------END-------------------------
+PlaylistNode *PlaylistNode::GetNextNode()
+{
 
+	return this->nextNodePtr;
+}
+//----------END-------------------------
 
 // FUNCTION TO GET THE LENGTH OF THE PLAYLIST
 int PlaylistNode::GetPlaylistSongLength()
@@ -58,10 +62,7 @@ PlaylistNode *PlaylistNode::AddSong(PlaylistNode *headNode)
 	cout << "    ---ADD SONG---" << endl;
 
 	cin.ignore(99, '\n');
-	
-	
 
-	
 	cout << " Enter song name : ";
 	getline(cin, nSongName);
 
@@ -168,12 +169,6 @@ void PlaylistNode::DeleteSong(PlaylistNode *entryNode)
 	return;
 }
 
-PlaylistNode *PlaylistNode::GetNextNode()
-{
-
-	return this->nextNodePtr;
-}
-
 void PlaylistNode::PrintPlaylistNode()
 {
 
@@ -214,7 +209,6 @@ void PlaylistNode::PrintPlaylist(PlaylistNode *headObj)
 	return;
 }
 
-
 void PlaylistNode::InsertAfter(PlaylistNode *nodeLoc)
 {
 	PlaylistNode *tmpVal = 0;
@@ -225,4 +219,3 @@ void PlaylistNode::InsertAfter(PlaylistNode *nodeLoc)
 
 	return;
 }
-
