@@ -19,7 +19,7 @@ public:
 	void PrintPlaylist(PlaylistNode *headObj);
 	void InsertAfter(PlaylistNode *nodeLoc);
 	void play(int songs);
-	void ShowStatus() const
+	void ShowStatus() const;
 
 private:
 	string songName;
