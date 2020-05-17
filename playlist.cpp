@@ -78,6 +78,7 @@ PlaylistNode *PlaylistNode::AddSong(PlaylistNode *headNode)
 		cout << "-Enter a number : ";
 		cin >> songLength;
 	}
+	cout << "=====Song Added!=====" << endl;
 
 	nNode = new PlaylistNode(nSongName, nArtistName, songLength);
 	while (tailNode->GetNextNode() != 0)
