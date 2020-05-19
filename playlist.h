@@ -18,14 +18,13 @@ public:
 	void PrintPlaylistNode();
 	void PrintPlaylist(PlaylistNode *headObj);
 	void InsertAfter(PlaylistNode *nodeLoc);
-	void play(int songs);
-	void ShowStatus() const;
+	void SwapPositions(PlaylistNode* headNode);
 
 private:
 	string songName;
 	string artistName;
 	int songLength;
-	int song_place;
 	PlaylistNode *nextNodePtr;
+	
 };
 #endif
