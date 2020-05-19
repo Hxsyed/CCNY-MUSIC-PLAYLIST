@@ -10,6 +10,7 @@ PlaylistNode::PlaylistNode(string initSongName, string initArtistName, int initL
 	this->artistName = initArtistName;
 	this->songLength = initLength;
 	this->nextNodePtr = initLoc;
+
 	return;
 };
 
@@ -77,7 +78,6 @@ PlaylistNode *PlaylistNode::AddSong(PlaylistNode *headNode)
 		cout << "-Enter a number : ";
 		cin >> songLength;
 	}
-	cout << "=====Song Added!=====" << endl;
 
 	nNode = new PlaylistNode(nSongName, nArtistName, songLength);
 	while (tailNode->GetNextNode() != 0)
@@ -205,93 +205,9 @@ void PlaylistNode::PrintPlaylist(PlaylistNode *headObj)
 		cout << endl;
 		++i;
 	}
-}
 
-//FUNCTION TO SWAP THE ORDER OF SONGS
-void PlaylistNode::SwapPositions(PlaylistNode* headNode) {
-	PlaylistNode* currNode;
-	PlaylistNode* targetNode = 0;
-	int i = 1, songIndex, newSongIndex, playlistLength = 0;
-
-	currNode = headNode->GetNextNode();
-
-	while (currNode != 0) {	
-		++playlistLength;
-		currNode = currNode->GetNextNode();
-		}
-
-	cout << "  SWITCH POSTIONS  " << endl;
-
-	cout << " Enter current index of song: ";
-	cin >> songIndex;
-	while (songIndex < 1 || songIndex > playlistLength || cin.fail()) {
-		cin.clear();																// Determines whether input is valid
-		cin.ignore(999, '\n');
-		cout << "(ERROR) Enter a number 1-" << playlistLength << ": ";
-		cin >> songIndex;
-		}
-
-	currNode = headNode->GetNextNode();
-
-	while (currNode != 0) {
-		if (i == songIndex) {
-			targetNode = currNode;
-			break;
-			}
-		++i;
-		currNode = currNode->GetNextNode();
-		}
-
-	cout << endl << endl << " Enter the new index for the song \"" << targetNode->songName << "\": ";
-	cin >> newSongIndex;
-	while (cin.fail()) {
-		cin.clear();																// Determines whether input is valid
-		cin.ignore(999, '\n');
-		cout << "(ERROR) Enter a number 1-" << playlistLength << ": ";
-		cin >> newSongIndex;
-		}
-
-	if (newSongIndex < 1) {																// Sets value to 1 or max value if input is too high
-		newSongIndex = 1;
-		}
-	else if (newSongIndex > playlistLength) {
-		newSongIndex = playlistLength;
-		}
-	else if (newSongIndex == songIndex) {
-		return;
-		}
-
-	currNode = headNode;
-
-
-	while (currNode != 0) {
-		if (currNode->nextNodePtr == targetNode) {
-			currNode->nextNodePtr = targetNode->nextNodePtr;
-			targetNode->nextNodePtr = 0;
-			break;
-			}
-
-		currNode = currNode->nextNodePtr;
-
-		}
-
-	currNode = headNode;
-	i = 0;
-
-	while (currNode != 0) {
-		if ((i + 1) == newSongIndex) {
-			currNode->InsertAfter(targetNode);
-			break;
-			}
-		currNode = currNode->GetNextNode();
-		++i;
-		}
-
-
-	cout << endl << "  DONE  " << endl;
 	return;
-	}
-
+}
 
 void PlaylistNode::InsertAfter(PlaylistNode *nodeLoc)
 {
