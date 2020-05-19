@@ -18,6 +18,7 @@ void PrintMenu(string name, PlaylistNode *headObj, PlaylistNode *lastObj)
 				 << " a -- Add a new song" << endl
 				 << " d -- Delete a song" << endl
 				 << " l -- Output length of entire library (in seconds)" << endl
+				 << " s -- Swap the order of songs" << endl
 				 << " q -- Quit Program" << endl;
 
 			cout << "   Choose an option: ";
@@ -49,6 +50,12 @@ void PrintMenu(string name, PlaylistNode *headObj, PlaylistNode *lastObj)
 				 << endl;
 			input = 'n';
 			break;
+		case 'F':
+		case 'f':
+			headObj->SwapPositions(headObj);
+			input = 'n';
+			break; 
+
 		default:
 			cout << "Invalid input, enter another: ";
 			cin >> input;
