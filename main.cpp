@@ -18,7 +18,7 @@ void PrintMenu(string name, PlaylistNode *headObj, PlaylistNode *lastObj)
 				 << " a -- Add a new song" << endl
 				 << " d -- Delete a song" << endl
 				 << " l -- Output length of entire library (in seconds)" << endl
-				 << " f -- Play a fixed number of songs" << endl
+				 << " s -- Swap the order of songs" << endl
 				 << " q -- Quit Program" << endl;
 
 			cout << "   Choose an option: ";
@@ -52,12 +52,10 @@ void PrintMenu(string name, PlaylistNode *headObj, PlaylistNode *lastObj)
 			break;
 		case 'F':
 		case 'f':
-			void PlaylistNode::ShowStatus() const
-{
-			cout << "The index of the songs currently playing are " << song_index << endl;
-}
+			headObj->SwapPositions(headObj);
 			input = 'n';
 			break;
+
 		default:
 			cout << "Invalid input, enter another: ";
 			cin >> input;
