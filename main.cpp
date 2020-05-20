@@ -50,8 +50,8 @@ void PrintMenu(string name, PlaylistNode *headObj, PlaylistNode *lastObj)
 				 << endl;
 			input = 'n';
 			break;
-		case 'F':
-		case 'f':
+		case 'S':
+		case 's':
 			headObj->SwapPositions(headObj);
 			input = 'n';
 			break; 
